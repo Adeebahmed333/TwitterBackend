@@ -38,4 +38,6 @@ app.listen(3000,async()=>{
 
     // const tweet=await tweetRepo.getWithComments('6606a42512f9d2457a24e4e3');
     // console.log(tweet);
+    const tweet=await tweetRepo.getAll(2,2);
+    console.log(tweet[0].contentWithEmail);
 });
