@@ -1,11 +1,12 @@
 const express=require('express');
 const conn= require('./config/dbconfig');
 const Comment=require('./models/comment');
+const {PORT}=require('./config/serverConfig')
 const tweetRepository=require('./repository/tweet-repository');
 const app=express();
 
-app.listen(3000,async()=>{
-    console.log(`Server Started At Port: 3000`);
+app.listen(PORT,async()=>{
+    console.log(`Server Started At Port: ${PORT}`);
     await conn();
     console.log('Done');
 
