@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-
+const {DB_URL}=require('./serverConfig');
 async function connect() {
     try {
-        await mongoose.connect('mongodb://0.0.0.0:27017/twitter_dev');
+        await mongoose.connect(DB_URL);
         console.log('Connected to MongoDB');
     } catch (error) {
         console.error('Error connecting to MongoDB:', error.message);
