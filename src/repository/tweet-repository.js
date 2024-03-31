@@ -1,58 +1,52 @@
-const Tweet=require('../models/tweet');
+const Tweet = require("../models/tweet");
 
-class TweetRepository{
-   async create(data){
+class TweetRepository {
+  async create(data) {
     try {
-        const tweet=await Tweet.create(data);
-        return tweet;
+      const tweet = await Tweet.create(data);
+      return tweet;
     } catch (error) {
-        console.log(error);
-        throw error;
+      console.log(error);
+      throw error;
     }
-   }
-   async get(id){
+  }
+  async get(id) {
     try {
-        const tweet=await Tweet.findById(id);
-        return tweet;
+      const tweet = await Tweet.findById(id);
+      return tweet;
     } catch (error) {
-        console.log(error);
-        throw error;
+      console.log(error);
+      throw error;
     }
-   }
-   async getWithComments(id){
+  }
+  async getWithComments(id) {
     try {
-        const tweet=await Tweet.findById(id).populate({path:'comments'}).lean();
-        return tweet;
+      const tweet = await Tweet.findById(id)
+        .populate({ path: "comments" })
+        .lean();
+      return tweet;
     } catch (error) {
-        console.log(error);
-        throw error;
+      console.log(error);
+      throw error;
     }
-   }
-   async getAll(offset,limit){
+  }
+  async getAll(offset, limit) {
     try {
-        const tweet=await Tweet.find().skip(offset).limit(limit);
-        return tweet;
+      const tweet = await Tweet.find().skip(offset).limit(limit);
+      return tweet;
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-   }
-   async update(id,data){
+  }
+
+  async destroy(id) {
     try {
-        const tweet=await Tweet.findByIdAndUpdate(id,data,{new:true});//new true to get the updated data
-        return tweet;
+      await Tweet.findByIdAndDelete(id);
+      return true;
     } catch (error) {
-        console.log(error);
-        throw error;
+      console.log(error);
+      throw error;
     }
-   }
-   async destroy(id){
-    try {
-        await Tweet.findByIdAndDelete(id);
-        return true;
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-   }
+  }
 }
-module.exports=TweetRepository;
+module.exports = TweetRepository;
