@@ -1,15 +1,13 @@
 import express from 'express';
 import {connect} from './config/dbconfig.js';
 import { PORT } from './config/serverConfig.js';
-import TweetService from './services/tweet-service.js';
+import v1ApiRoutes from './routes/index.js';
 const app=express();
+app.use(express.json());
+app.use('/api',v1ApiRoutes);
 
 app.listen(PORT,async()=>{
     console.log(`Server Started At Port: ${PORT}`);
     await connect();
-   const service=new TweetService();
-    // const tweet=service.create({
-    //     content:' i\'m #conquering #eating #sleeping'
-    // });
     console.log('Done');
 });

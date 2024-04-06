@@ -7,7 +7,8 @@ class TweetService
         this.hashtagRepository=new HashtagRepository();
     } 
    async create(data){
-    const content=data.content;
+    try {
+        const content=data.content;
     const tags=content.match(/#[a-zA-Z0-9_]+/g).map((tag)=>tag.substring(1).toLowerCase());//regex to extract hashtags
     console.log(tags);
     const tweet=await this.tweetRepository.create(data);
@@ -23,6 +24,12 @@ class TweetService
     })
     return tweet;
 
+    } catch (error) {
+        console.log(error);
+        throw error;
+
+    }
+    
      
    }
 
