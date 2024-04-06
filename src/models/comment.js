@@ -1,6 +1,6 @@
-const mongoose=require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const commentSchema=new mongoose.Schema({
+const commentSchema=new Schema({
     content:{
         type:String,
         required:true
@@ -10,5 +10,5 @@ const commentSchema=new mongoose.Schema({
     }
 
 },{timestamps:true});
-const Comment=mongoose.model('Comment',commentSchema);
-module.exports=Comment;
+const Comment=model('Comment',commentSchema);
+export default Comment;
