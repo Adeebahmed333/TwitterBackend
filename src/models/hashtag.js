@@ -4,6 +4,7 @@ const hashtagSchema=new Schema({
     title:{
         type:String,
         required:true,
+        unique:true
     },
     tweets:[
         {
@@ -12,6 +13,7 @@ const hashtagSchema=new Schema({
         }
     ]
 },{timestamps:true});
+
 
 const Hashtag=model('Hashtag',hashtagSchema);
 export default Hashtag;
