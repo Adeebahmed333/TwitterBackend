@@ -5,7 +5,13 @@ const tweetSchema=new Schema({
         type:String,
         required:true,
         max:[250,'Tweet Can\'t be more than 250 characters']
-    }
+    },
+    likes:[
+        {
+        type:Schema.Types.ObjectId,
+        ref:'Like'
+        }
+   ]
 },{timestamps:true});
 
 const Tweet=model('Tweet',tweetSchema);
