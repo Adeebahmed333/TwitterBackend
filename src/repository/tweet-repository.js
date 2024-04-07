@@ -1,24 +1,21 @@
 import Tweet from "../models/tweet.js";
+import CrudRepository from "./crud-repository.js"
 
-class TweetRepository {
-  async create(data) {
-    try {
-      const tweet = await Tweet.create(data);
-      return tweet;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+class TweetRepository extends CrudRepository {
+
+  constructor(){
+    super(Tweet);
   }
-  async get(id) {
-    try {
-      const tweet = await Tweet.findById(id);
-      return tweet;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
+  // async create(data) {
+  //   try {
+  //     const tweet = await Tweet.create(data);
+  //     return tweet;
+  //   } catch (error) {
+  //     console.log(error);
+  //     throw error;
+  //   }
+  // }
+
   async getWithComments(id) {
     try {
       const tweet = await Tweet.findById(id)
@@ -39,14 +36,5 @@ class TweetRepository {
     }
   }
 
-  async destroy(id) {
-    try {
-      await Tweet.findByIdAndDelete(id);
-      return true;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
 }
 export default TweetRepository;
