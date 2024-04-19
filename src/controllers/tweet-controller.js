@@ -20,3 +20,22 @@ try {
     });
 }
 }
+
+export const getTweet=async(req,res)=>{
+    try {
+        const response=await tweetService.get(req.params.id);
+        return res.status(201).json({
+            success:true,
+            massage:'Successfully Fetched the Tweet',
+            data:response,
+            err:{}
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success:false,
+            massage:'Something Went Wrong',
+            data:{},
+            err:error.message 
+        });
+    }
+}
