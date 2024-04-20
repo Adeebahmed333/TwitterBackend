@@ -18,6 +18,6 @@ router.get('/tweets/:id',getTweet);
 router.post("/likes/toggle",toggleLike);
 
 //Comment Routes
-router.post("/comments",createComment);
+router.post("/comments",authenticate,createComment);
 
 export default router;
