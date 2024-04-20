@@ -3,20 +3,20 @@ import Hashtag from "../models/hashtag.js";
 class HashtagRepository {
   async create(data) {
     try {
-      const hashtag  = await Hashtag.create(data);
+      const hashtag = await Hashtag.create(data);
       return hashtag;
     } catch (error) {
       console.log(error);
       throw error;
     }
   }
-  async bulkCreate(data){
+  async bulkCreate(data) {
     try {
-        const hashtags=await Hashtag.insertMany(data);
-        return hashtags;
+      const hashtags = await Hashtag.insertMany(data);
+      return hashtags;
     } catch (error) {
-        console.log(error);
-        throw error;
+      console.log(error);
+      throw error;
     }
   }
   async get(id) {
@@ -40,7 +40,7 @@ class HashtagRepository {
 
   async destroy(id) {
     try {
-      const response=await Hashtag.findByIdAndDelete(id);
+      const response = await Hashtag.findByIdAndDelete(id);
       return response;
     } catch (error) {
       console.log(error);
@@ -48,12 +48,12 @@ class HashtagRepository {
     }
   }
 
-  async getByName(titleList){
+  async getByName(titleList) {
     try {
-      const hashtags=Hashtag.find({
-       title:titleList
+      const hashtags = Hashtag.find({
+        title: titleList,
       });
-      return hashtags
+      return hashtags;
     } catch (error) {
       console.log(error);
       throw error;

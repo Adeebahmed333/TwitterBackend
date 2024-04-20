@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
-import  {DB_URL} from './serverConfig.js';
+import mongoose from "mongoose";
+import { DB_URL } from "./serverConfig.js";
 export async function connect() {
-    try {
-        await mongoose.connect(DB_URL);
-        console.log('Connected to MongoDB');
-    } catch (error) {
-        console.error('Error connecting to MongoDB:', error.message);
-        process.exit(1);
-    }
+  try {
+    await mongoose.connect(DB_URL);
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    process.exit(1);
+  }
 }

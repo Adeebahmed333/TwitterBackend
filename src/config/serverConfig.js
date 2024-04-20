@@ -1,8 +1,8 @@
-import { config } from 'dotenv';
-import {genSaltSync} from 'bcrypt';
+import { config } from "dotenv";
+import { genSaltSync } from "bcrypt";
 config();
 
 export const PORT = process.env.PORT;
 export const DB_URL = process.env.DB_URL;
-export const SALT=genSaltSync(13);
-export const JWT_SECRET=process.env.JWT_SECRET;
+export const SALT = genSaltSync(13);
+export const JWT_SECRET = process.env.JWT_SECRET;
