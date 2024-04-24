@@ -10,13 +10,13 @@ class TweetService {
       const tags = content
         .match(/#[a-zA-Z0-9_]+/g)
         .map((tag) => tag.substring(1).toLowerCase()); //regex to extract hashtags
-      console.log(tags);
+      // console.log(tags);
       const tweet = await this.tweetRepository.create(data);
       let alreadyPresentTags = await this.hashtagRepository.getByName(tags);
       let TitlealreadyPresentTags = alreadyPresentTags.map(
         (tags) => tags.title
       );
-      console.log(alreadyPresentTags);
+     // console.log(alreadyPresentTags);
       let newTags = tags.filter(
         (tag) => !TitlealreadyPresentTags.includes(tag)
       );

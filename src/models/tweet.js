@@ -19,6 +19,9 @@ const tweetSchema = new Schema(
         ref: "Comment",
       },
     ],
+    images: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
